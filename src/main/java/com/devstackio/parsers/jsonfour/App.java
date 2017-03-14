@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -28,6 +29,8 @@ public class App {
         listData.forEach((str) -> {
             universityList.add( UniversityParser.INSTANCE.parse(str) );
         });
+        
+        universityList.sort(Comparator.comparing(University::getName));
        
         Type listType = new TypeToken<List<University>>() {}.getType();
 
